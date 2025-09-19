@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 21:11:25 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/09/20 00:37:08 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/09/20 01:17:04 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,19 @@ int main()
         // else if (prompt == "SEARCH")
         //     phonebook.search();
         else
-            printMessage(WRONG_INPUT);
+            printMessage(ERROR);
     }
     return 0;
+}
+
+void reset()
+{
+    system("clear");
+    std::cout << "\033[1;36m"
+      << "--------------------------------------------------\n"
+      << "           WELCOME TO VIRTUAL PHONEBOOK!    \n"
+      << "--------------------------------------------------"
+      << "\033[0m\n";
 }
 
 void printMessage(MessageType type, const std::string& extra)
@@ -53,7 +63,8 @@ void printMessage(MessageType type, const std::string& extra)
             std::cout << "\033[1;33m>>> PLEASE ENTER A PROMPT: ADD | SEARCH | EXIT <<<\033[0m\n";
             break;
 
-        case WRONG_INPUT:
+        case ERROR:
+            reset();
             std::cout << "\033[1;31m>>>       WRONG INPUT! Please try again.       <<<\033[0m\n";
             break;
 

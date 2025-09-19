@@ -6,8 +6,9 @@
 # include <ctime>
 # include "Contact.hpp"
 
-enum MessageType { PHONEBOOK, PROMPT, WRONG_INPUT, EXIT, SUCCESS };
+enum MessageType { PHONEBOOK, PROMPT, ERROR, EXIT, SUCCESS };
 
+void reset();
 void printMessage(MessageType type, const std::string& extra = "");
 
 class PhoneBook
