@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 16:26:14 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/09/20 01:22:31 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/09/20 01:26:32 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void PhoneBook::add()
 
     std::cout << "\033[1;34mEnter first name: \033[0m";
     if (!std::getline(std::cin, input) || input.empty()) {
-        reset();
+        std::system("clear");
+        printMessage(PHONEBOOK);
         printMessage(SUCCESS, "\033[1;31m>>>         First name cannot be empty!        <<< \033[0m");
         return;
     }
@@ -36,7 +37,8 @@ void PhoneBook::add()
 
     std::cout << "\033[1;35mEnter last name: \033[0m";
     if (!std::getline(std::cin, input) || input.empty()) {
-        reset();
+        std::system("clear");
+        printMessage(PHONEBOOK);
         printMessage(SUCCESS, "\033[1;31m>>>         Last name cannot be empty!         <<< \033[0m");
         return;
     }
@@ -44,7 +46,8 @@ void PhoneBook::add()
 
     std::cout << "\033[1;33mEnter nickname: \033[0m";
     if (!std::getline(std::cin, input) || input.empty()) {
-        reset();
+        std::system("clear");
+        printMessage(PHONEBOOK);
         printMessage(SUCCESS, "\033[1;31m>>>           Nickname cannot be empty!        <<< \033[0m");
         return;
     }
@@ -52,7 +55,8 @@ void PhoneBook::add()
 
     std::cout << "\033[1;32mEnter phone number: \033[0m";
     if (!std::getline(std::cin, input) || input.empty()) {
-        reset();
+        std::system("clear");
+        printMessage(PHONEBOOK);
         printMessage(SUCCESS, "\033[1;31m>>>        Phone number cannot be empty!       <<< \033[0m");
         return;
     }
@@ -60,7 +64,8 @@ void PhoneBook::add()
 
     std::cout << "\033[1;31mEnter darkest secret: \033[0m";
     if (!std::getline(std::cin, input) || input.empty()) {
-        reset();
+        std::system("clear");
+        printMessage(PHONEBOOK);
         printMessage(SUCCESS, "\033[1;31m>>>       Darkest secret cannot be empty!      <<< \033[0m");
         return;
     }

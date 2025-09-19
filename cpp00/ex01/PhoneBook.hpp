@@ -8,7 +8,6 @@
 
 enum MessageType { PHONEBOOK, PROMPT, ERROR, EXIT, SUCCESS };
 
-void reset();
 void printMessage(MessageType type, const std::string& extra = "");
 
 class PhoneBook
