@@ -18,6 +18,7 @@ class PhoneBook
 	    int nextIndex;    
 
 	public:
+		PhoneBook() : contactCount(0), nextIndex(0) {}
 	    void add();
 		void exit();
 	    void search() const;

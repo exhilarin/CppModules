@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 21:11:25 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/09/20 00:14:18 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/09/20 00:37:08 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,12 @@ void printMessage(MessageType type, const std::string& extra)
 
         case EXIT:
         {
+            system("clear");
             std::string messages[] = {
-                "\033[1;32mGoodbye! Your contacts are lost forever... 💀\033[0m",  // green
-                "\033[1;32mExiting PhoneBook... Poof! All contacts vanished into the void! ✨\033[0m",
-                "\033[1;32mMission aborted. Your secrets are safe... or maybe not. 🤫\033[0m",
-                "\033[1;32mEXIT detected. Contacts self-destructing in 3... 2... 1... 💥\033[0m"
+                "\033[1;31mGoodbye! Your contacts are lost forever... 💀\033[0m",  // kırmızı
+                "\033[1;33mExiting PhoneBook... Poof! All contacts vanished into the void! ✨\033[0m", // sarı
+                "\033[1;34mMission aborted. Your secrets are safe... or maybe not. 🤫\033[0m", // mavi
+                "\033[1;35mEXIT detected. Contacts self-destructing in 3... 2... 1... 💥\033[0m" // magenta
             };
             int randomIndex = rand() % 4;
             std::cout << messages[randomIndex] << "\n\n";

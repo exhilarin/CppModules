@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 16:26:14 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/09/20 00:08:29 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/09/20 00:35:39 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ void PhoneBook::add()
 
     std::system("clear");
     printMessage(PHONEBOOK);
-    printMessage(SUCCESS, "Contact added successfully!");
+    printMessage(SUCCESS, ">>>         Contact added successfully!        <<<");
 }
