@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 16:26:14 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/09/20 13:42:42 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/09/20 17:12:27 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,55 +21,55 @@ void PhoneBook::exit(void)
 void PhoneBook::add()
 {
     std::system("clear");
-    std::cout << "\033[1;33m"
+    std::cout << BYELLOW
               << "--------------------------------------------------\n"
-              << "         ADDING NEW CONTACT TO THE PHONEBOOK...  \n"
+              << "       ADDING NEW CONTACT TO THE PHONEBOOK...   \n"
               << "--------------------------------------------------"
-              << "\033[0m\n";
+              << RESET "\n";
     Contact newContact;
     std::string input;
 
-    std::cout << "\033[1;34mEnter first name: \033[0m";
+    std::cout << BBLUE "Enter first name: " BYELLOW;
     if (!std::getline(std::cin, input) || input.empty()) {
         std::system("clear");
         printMessage(PHONEBOOK);
-        printMessage(SUCCESS, "\033[1;31m>>>         First name cannot be empty!        <<< \033[0m");
+        printMessage(SUCCESS, BRED ">>>         First name cannot be empty!        <<< " RESET);
         return;
     }
     newContact.setFirstName(input);
 
-    std::cout << "\033[1;35mEnter last name: \033[0m";
+    std::cout << BBLUE "Enter last name: " BYELLOW;
     if (!std::getline(std::cin, input) || input.empty()) {
         std::system("clear");
         printMessage(PHONEBOOK);
-        printMessage(SUCCESS, "\033[1;31m>>>         Last name cannot be empty!         <<< \033[0m");
+        printMessage(SUCCESS, BRED ">>>         Last name cannot be empty!         <<< " BYELLOW RESET);
         return;
     }
     newContact.setLastName(input);
 
-    std::cout << "\033[1;33mEnter nickname: \033[0m";
+    std::cout << BBLUE "Enter nickname: " BYELLOW;
     if (!std::getline(std::cin, input) || input.empty()) {
         std::system("clear");
         printMessage(PHONEBOOK);
-        printMessage(SUCCESS, "\033[1;31m>>>           Nickname cannot be empty!        <<< \033[0m");
+        printMessage(SUCCESS, BRED ">>>           Nickname cannot be empty!        <<< " BYELLOW);
         return;
     }
     newContact.setNickname(input);
 
-    std::cout << "\033[1;32mEnter phone number: \033[0m";
+    std::cout << BBLUE "Enter phone number: " BYELLOW;
     if (!std::getline(std::cin, input) || input.empty()) {
         std::system("clear");
         printMessage(PHONEBOOK);
-        printMessage(SUCCESS, "\033[1;31m>>>        Phone number cannot be empty!       <<< \033[0m");
+        printMessage(SUCCESS, BRED ">>>        Phone number cannot be empty!       <<< " BYELLOW);
         return;
     }
     newContact.setPhoneNumber(input);
 
-    std::cout << "\033[1;31mEnter darkest secret: \033[0m";
+    std::cout << BBLUE "Enter darkest secret: " BYELLOW;
     if (!std::getline(std::cin, input) || input.empty()) {
         std::system("clear");
         printMessage(PHONEBOOK);
-        printMessage(SUCCESS, "\033[1;31m>>>       Darkest secret cannot be empty!      <<< \033[0m");
+        printMessage(SUCCESS, BRED ">>>       Darkest secret cannot be empty!      <<< " RESET);
         return;
     }
     newContact.setDarkestSecret(input);
@@ -80,44 +80,51 @@ void PhoneBook::add()
 
     std::system("clear");
     printMessage(PHONEBOOK);
-    printMessage(SUCCESS, ">>>         Contact added successfully!        <<<");
+    printMessage(SUCCESS, BGREEN ">>>         Contact added successfully!        <<<");
 }
 
 void PhoneBook::search()
 {
-	if (contactCount == 0)
-	{
-		std::cout << "\033[1;31m>>>           No Contacts Saved Yet!           <<< "
-		          << "\033[0m\n";
-		return;
-	}
-	std::system("clear");
-	displayTable();
-	std::cout << "\nEnter index of the contact to view: ";
-	std::string line;
-	std::getline(std::cin, line);
-	if (line.empty())
-	{
-		std::cout << "\033[1;31mInvalid Index\033[0m\n";
-		return;
-	}
-	int idx = 0;
-	for (size_t i = 0; i < line.size(); i++)
-	{
-		if (!isdigit(line[i]))
-		{
-			std::cout << "\033[1;31mInvalid Index\033[0m\n";
-			return;
-		}
-		idx = idx * 10 + (line[i] - '0');
-	}
-	if (idx < 0 || idx >= contactCount)
-	{
-		std::cout << "\033[1;31mInvalid Index\033[0m\n";
-		return;
-	}
+    if (contactCount == 0)
+    {
+        system("clear");
+        printMessage(PHONEBOOK);
+        std::cout << BRED ">>>           No Contacts Saved Yet!           <<< " RESET "\n";
+        return;
+    }
+    std::system("clear");
+    displayTable();
+    std::cout << BYELLOW <<"\n>>>     Enter index of the contact to view.    <<<\n" BBLUE;
+    std::string line;
+    std::getline(std::cin, line);
+    if (line.empty())
+    {
+        system("clear");
+        printMessage(PHONEBOOK);
+        std::cout << BRED ">>>                Invalid index.              <<<" RESET << std::endl;
+        return;
+    }
+    int idx = 0;
+    for (size_t i = 0; i < line.size(); i++)
+    {
+        if (!isdigit(line[i]))
+        {
+            system("clear");
+            printMessage(PHONEBOOK);
+            std::cout << BRED ">>>                Invalid index.              <<<" RESET << std::endl;
+            return;
+        }
+        idx = idx * 10 + (line[i] - '0');
+    }
+    if (idx < 0 || idx >= contactCount)
+    {
+        system("clear");
+        printMessage(PHONEBOOK);
+        std::cout << BRED ">>>                Invalid index.              <<<" RESET << std::endl;
+        return;
+    }
     system("clear");
-	displayContact(idx);
+    displayContact(idx);
 }
 
 static std::string formatfield(const std::string &str)
@@ -129,55 +136,49 @@ static std::string formatfield(const std::string &str)
 
 void PhoneBook::displayTable()
 {
-    std::cout << "\033[1;33m"
+    std::cout << BYELLOW
               << "--------------------------------------------------\n"
               << "                 CONTACT LIST                    \n"
-              << "--------------------------------------------------\n"
-              << "\033[0m";
-    std::cout << "\033[1;35m"
+              << "--------------------------------------------------"
+              << RESET "\n";
+    std::cout << BBLUE
               << std::setw(5) << "Index" << "|"
               << std::setw(12) << "First Name" << "|"
               << std::setw(12) << "Last Name" << "|"
               << std::setw(12) << "Nickname"
-              << "\033[0m" << std::endl;
-    std::cout << "\033[1;37m--------------------------------------------------\033[0m\n";
+              << RESET << std::endl;
+    std::cout <<  BBLUE << "--------------------------------------------------" RESET "\n";
     for (int i = 0; i < contactCount; i++)
     {
-        std::cout << "\033[1;36m" << std::setw(5) << i << "\033[0m" << "|"
-                  << "\033[1;32m" << std::setw(12) 
-                  << formatfield(contacts[i].getFirstName()) << "\033[0m" << "|"
-                  << "\033[1;32m" << std::setw(12) 
-                  << formatfield(contacts[i].getLastName()) << "\033[0m" << "|"
-                  << "\033[1;32m" << std::setw(12) 
-                  << formatfield(contacts[i].getNickname()) << "\033[0m"
+        std::cout << BYELLOW << std::setw(5) << i << RESET "|"
+                  << BYELLOW << std::setw(12) 
+                  << formatfield(contacts[i].getFirstName()) << RESET "|"
+                  << BYELLOW << std::setw(12) 
+                  << formatfield(contacts[i].getLastName()) << RESET "|"
+                  << BYELLOW << std::setw(12) 
+                  << formatfield(contacts[i].getNickname()) << RESET
                   << std::endl;
     }
-    std::cout << "\033[1;37m--------------------------------------------------\033[0m\n";
+    std::cout << BBLUE << "--------------------------------------------------" RESET;
 }
-
 
 void PhoneBook::displayContact(int index)
 {
     if (index < 0 || index >= contactCount)
     {
-        std::cout << "\033[1;31m>>> Invalid index. <<<\033[0m" << std::endl;
+        std::cout << BRED ">>> Invalid index. <<<" RESET << std::endl;
         return;
     }
     const Contact &c = contacts[index];
-    std::cout << "\033[1;33m"
+    std::cout << BYELLOW
               << "--------------------------------------------------\n"
               << "                 CONTACT DETAILS                 \n"
-              << "--------------------------------------------------\n"
-              << "\033[0m";
-    std::cout << "\033[1;35mFirst Name:     \033[0m\033[1;32m" 
-              << c.getFirstName() << "\033[0m\n";
-    std::cout << "\033[1;35mLast Name:      \033[0m\033[1;32m" 
-              << c.getLastName() << "\033[0m\n";
-    std::cout << "\033[1;35mNickname:       \033[0m\033[1;32m" 
-              << c.getNickname() << "\033[0m\n";
-    std::cout << "\033[1;35mPhone Number:   \033[0m\033[1;32m" 
-              << c.getPhoneNumber() << "\033[0m\n";
-    std::cout << "\033[1;35mDarkest Secret: \033[0m\033[1;32m" 
-              << c.getDarkestSecret() << "\033[0m\n";
-    std::cout << "\033[1;37m--------------------------------------------------\n\033[0m";
+              << "--------------------------------------------------"
+              << RESET "\n";
+    std::cout << BBLUE "First Name:     " RESET BYELLOW << c.getFirstName() << RESET "\n";
+    std::cout << BBLUE "Last Name:      " RESET BYELLOW << c.getLastName() << RESET "\n";
+    std::cout << BBLUE "Nickname:       " RESET BYELLOW << c.getNickname() << RESET "\n";
+    std::cout << BBLUE "Phone Number:   " RESET BYELLOW << c.getPhoneNumber() << RESET "\n";
+    std::cout << BBLUE "Darkest Secret: " RESET BYELLOW << c.getDarkestSecret() << RESET "\n";
+    std::cout << BYELLOW "--------------------------------------------------" RESET "\n";
 }

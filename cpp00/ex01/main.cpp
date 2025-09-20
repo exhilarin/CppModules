@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 21:11:25 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/09/20 13:41:21 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/09/20 16:59:25 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int main()
     while (1)
     {
         printMessage(PROMPT);
-        if (!std::getline(std::cin, prompt)) break;
-
+        if (!std::getline(std::cin, prompt))
+            break;
         if (prompt == "EXIT")
             phonebook.exit();
         else if (prompt == "ADD")
@@ -41,31 +41,33 @@ void printMessage(MessageType type, const std::string& extra)
     switch(type)
     {
         case PHONEBOOK:
-            std::cout << "\033[1;36m"
+            std::cout << BYELLOW
                       << "--------------------------------------------------\n"
                       << "           WELCOME TO VIRTUAL PHONEBOOK!    \n"
                       << "--------------------------------------------------"
-                      << "\033[0m\n";
+                      << RESET "\n";
             break;
 
         case PROMPT:
-            std::cout << "\033[1;33m>>> PLEASE ENTER A PROMPT: ADD | SEARCH | EXIT <<<\033[0m\n";
+            std::cout << BBLUE "+------------------------------------------------+\n";
+            std::cout << BBLUE "|      ADD      |     SEARCH     |      EXIT     |" RESET "\n";
+            std::cout << BBLUE "+------------------------------------------------+\n" BYELLOW;
             break;
 
         case ERROR:
             system("clear");
             printMessage(PHONEBOOK);
-            std::cout << "\033[1;31m>>>       WRONG INPUT! Please try again.       <<<\033[0m\n";
+            std::cout << BRED ">>>       WRONG INPUT! Please try again.       <<<" RESET "\n";
             break;
 
         case EXIT:
         {
             system("clear");
             std::string messages[] = {
-                "\033[1;31mGoodbye! Your contacts are lost forever... 💀\033[0m",
-                "\033[1;33mExiting PhoneBook... Poof! All contacts vanished into the void! ✨\033[0m",
-                "\033[1;34mMission aborted. Your secrets are safe... or maybe not. 🤫\033[0m",
-                "\033[1;35mEXIT detected. Contacts self-destructing in 3... 2... 1... 💥\033[0m"
+                BRED "Goodbye! Your contacts are lost forever... 💀" RESET,
+                BYELLOW "Exiting PhoneBook... Poof! All contacts vanished into the void! ✨" RESET,
+                BBLUE "Mission aborted. Your secrets are safe... or maybe not. 🤫" RESET,
+                BMAGENTA "EXIT detected. Contacts self-destructing in 3... 2... 1... 💥" RESET
             };
             int randomIndex = rand() % 4;
             std::cout << messages[randomIndex] << "\n\n";
@@ -73,7 +75,7 @@ void printMessage(MessageType type, const std::string& extra)
         }
 
         case SUCCESS:
-            std::cout << "\033[1;32m" << extra << "\033[0m\n";
+            std::cout << BGREEN << extra << RESET "\n";
             break;
 
         default:
