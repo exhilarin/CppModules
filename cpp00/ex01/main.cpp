@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 21:11:25 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/09/20 13:22:21 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/09/20 13:41:21 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void printMessage(MessageType type, const std::string& extra)
             break;
 
         case ERROR:
+            system("clear");
+            printMessage(PHONEBOOK);
             std::cout << "\033[1;31m>>>       WRONG INPUT! Please try again.       <<<\033[0m\n";
             break;
 

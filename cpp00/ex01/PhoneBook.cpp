@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 16:26:14 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/09/20 13:20:22 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/09/20 13:42:42 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,23 +85,39 @@ void PhoneBook::add()
 
 void PhoneBook::search()
 {
-    if (contactCount == 0)
-    {
-        std::cout << "\033[1;31m>>>           No Contacts Saved Yet!           <<< \033[0m\n";
-        return;
-    }
-    std::system("clear");
-    displayTable();
-    std::cout << "\nEnter index of the contact to view: ";
-    int idx;
-    if (!(std::cin >> idx) || idx < 0 || idx >= contactCount)
-    {
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits < std::streamsize >::max(), '\n');
-        std::cout << "Invalid Index";
-        return;
-    }
-    displayContact(idx);
+	if (contactCount == 0)
+	{
+		std::cout << "\033[1;31m>>>           No Contacts Saved Yet!           <<< "
+		          << "\033[0m\n";
+		return;
+	}
+	std::system("clear");
+	displayTable();
+	std::cout << "\nEnter index of the contact to view: ";
+	std::string line;
+	std::getline(std::cin, line);
+	if (line.empty())
+	{
+		std::cout << "\033[1;31mInvalid Index\033[0m\n";
+		return;
+	}
+	int idx = 0;
+	for (size_t i = 0; i < line.size(); i++)
+	{
+		if (!isdigit(line[i]))
+		{
+			std::cout << "\033[1;31mInvalid Index\033[0m\n";
+			return;
+		}
+		idx = idx * 10 + (line[i] - '0');
+	}
+	if (idx < 0 || idx >= contactCount)
+	{
+		std::cout << "\033[1;31mInvalid Index\033[0m\n";
+		return;
+	}
+    system("clear");
+	displayContact(idx);
 }
 
 static std::string formatfield(const std::string &str)
