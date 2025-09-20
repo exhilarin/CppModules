@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 21:11:25 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/09/20 01:24:46 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/09/20 13:22:21 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,17 @@ int main()
     PhoneBook phonebook;
     std::string prompt;
     printMessage(PHONEBOOK);
-    while (true)
+    while (1)
     {
         printMessage(PROMPT);
-
         if (!std::getline(std::cin, prompt)) break;
 
         if (prompt == "EXIT")
             phonebook.exit();
         else if (prompt == "ADD")
             phonebook.add();
-        // else if (prompt == "SEARCH")
-        //     phonebook.search();
+        else if (prompt == "SEARCH")
+            phonebook.search();
         else
             printMessage(ERROR);
     }
@@ -54,8 +53,6 @@ void printMessage(MessageType type, const std::string& extra)
             break;
 
         case ERROR:
-            std::system("clear");
-            printMessage(PHONEBOOK);
             std::cout << "\033[1;31m>>>       WRONG INPUT! Please try again.       <<<\033[0m\n";
             break;
 
@@ -63,10 +60,10 @@ void printMessage(MessageType type, const std::string& extra)
         {
             system("clear");
             std::string messages[] = {
-                "\033[1;31mGoodbye! Your contacts are lost forever... 💀\033[0m",  // kırmızı
-                "\033[1;33mExiting PhoneBook... Poof! All contacts vanished into the void! ✨\033[0m", // sarı
-                "\033[1;34mMission aborted. Your secrets are safe... or maybe not. 🤫\033[0m", // mavi
-                "\033[1;35mEXIT detected. Contacts self-destructing in 3... 2... 1... 💥\033[0m" // magenta
+                "\033[1;31mGoodbye! Your contacts are lost forever... 💀\033[0m",
+                "\033[1;33mExiting PhoneBook... Poof! All contacts vanished into the void! ✨\033[0m",
+                "\033[1;34mMission aborted. Your secrets are safe... or maybe not. 🤫\033[0m",
+                "\033[1;35mEXIT detected. Contacts self-destructing in 3... 2... 1... 💥\033[0m"
             };
             int randomIndex = rand() % 4;
             std::cout << messages[randomIndex] << "\n\n";

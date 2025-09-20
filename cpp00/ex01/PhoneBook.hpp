@@ -3,6 +3,8 @@
 
 # include <iostream>
 # include <cstdlib>
+# include <iomanip>
+# include <limits>
 # include <ctime>
 # include "Contact.hpp"
 
@@ -21,11 +23,11 @@ class PhoneBook
 		PhoneBook() : contactCount(0), nextIndex(0) {}
 	    void add();
 		void exit();
-	    void search() const;
+	    void search();
 
 	private:
-	    void displayTable() const;
-	    void displayContact(int index) const;
+    	void displayTable();
+    	void displayContact(int index);
 };
 
 #endif
