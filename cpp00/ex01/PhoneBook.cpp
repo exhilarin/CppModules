@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 16:26:14 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/09/21 15:54:01 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/09/23 16:23:43 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void PhoneBook::add()
 
     contacts[nextIndex] = newContact;
     nextIndex = (nextIndex + 1) % 8;
-    if (contactCount < 8) contactCount++;
-
+    if (contactCount < 8)
+        contactCount++;
     std::system("clear");
     printMessage(PHONEBOOK);
     printMessage(SUCCESS, GREEN ">>>         Contact added successfully!        <<<");

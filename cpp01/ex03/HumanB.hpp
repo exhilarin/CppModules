@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 01:11:19 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/09/29 01:31:45 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/09/30 15:55:00 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class HumanB
 {
     private:
         std::string name;
-        HumanB *weapon;
+        Weapon *weapon;
     
     public:
         HumanB(std::string name) : name(name) {}

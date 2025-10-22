@@ -6,9 +6,12 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 00:39:02 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/09/29 00:40:11 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/09/30 16:19:26 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
 int main()
 {
