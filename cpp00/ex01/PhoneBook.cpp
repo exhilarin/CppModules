@@ -6,7 +6,7 @@
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 16:26:14 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/09/23 16:23:43 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/10/22 20:08:01 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,14 @@ void PhoneBook::add()
         printMessage(SUCCESS, RED ">>>        Phone number cannot be empty!       <<< " YELLOW);
         return;
     }
+    for (int i = 0; i < input[i]; i++) {
+    if (!isdigit(input[i]) && input[i] != ' ') {
+        std::system("clear");
+        printMessage(PHONEBOOK);
+        printMessage(SUCCESS, RED ">>>   Phone number must contain only digits!   <<< " YELLOW);
+        return;
+    }
+}
     newContact.setPhoneNumber(input);
 
     std::cout << BLUE "Enter darkest secret: " YELLOW;
