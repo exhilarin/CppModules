@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   others.cpp                                         :+:      :+:    :+:   */
+/*   Conversion.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 23:56:28 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/10/25 01:07:53 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/10/25 02:00:06 by ilyas-guney      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 Fixed::Fixed(int const n)
 {
-    std::cout << "Int constructor called\n";
     setRawBits(n << _fractionalBits);
 }
 
 Fixed::Fixed(float const f)
 {
-    std::cout << "Float constructor called\n";
     this->setRawBits(roundf(f * (1 << _fractionalBits)));
 }
 
