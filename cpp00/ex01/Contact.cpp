@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Contact.cpp                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 16:26:08 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/09/19 21:00:19 by ilyas-guney      ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-// Setters
 void Contact::setFirstName(const std::string &str) {
     firstName = str;
 }
@@ -33,7 +21,6 @@ void Contact::setDarkestSecret(const std::string &str) {
     darkestSecret = str;
 }
 
-// Getters
 std::string Contact::getFirstName() const {
     return firstName;
 }

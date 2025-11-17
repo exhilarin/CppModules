@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 00:43:45 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/09/29 00:43:46 by ilyas-guney      ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
@@ -23,7 +12,6 @@
 # include <iostream>
 # include <cstdlib>
 # include <iomanip>
-# include <limits>
 # include <ctime>
 # include "Contact.hpp"
 
@@ -35,13 +23,12 @@ class PhoneBook
 {
 	private:
 	    Contact contacts[8];
-	    int contactCount; 
-	    int nextIndex;    
+	    int contactCount;
+	    int nextIndex;
 
 	public:
 		PhoneBook() : contactCount(0), nextIndex(0) {}
 	    void add();
-		void exit();
 	    void search();
 
 	private:

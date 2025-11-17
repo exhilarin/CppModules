@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/19 21:11:25 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/09/21 15:58:37 by ilyas-guney      ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
@@ -25,7 +14,10 @@ int main()
         if (!std::getline(std::cin, prompt))
             break;
         if (prompt == "EXIT")
-            phonebook.exit();
+        {
+            printMessage(EXIT);
+            break;
+        }
         else if (prompt == "ADD")
             phonebook.add();
         else if (prompt == "SEARCH")

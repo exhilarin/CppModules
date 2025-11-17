@@ -1,21 +1,13 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 16:26:14 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/10/22 20:10:34 by ilyas-guney      ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-void PhoneBook::exit(void)
+static bool is_all_space(const std::string &str)
 {
-    printMessage(EXIT);
-    std::exit(0);
+    int i = str.length();
+    while (i--)
+        if (!isspace(str[i]))
+            return false;
+    return true;
 }
 
 void PhoneBook::add()
@@ -30,7 +22,7 @@ void PhoneBook::add()
     std::string input;
 
     std::cout << BLUE "Enter first name: " YELLOW;
-    if (!std::getline(std::cin, input) || input.empty()) {
+    if (!std::getline(std::cin, input) || input.empty() || is_all_space(input)) {
         std::system("clear");
         printMessage(PHONEBOOK);
         printMessage(SUCCESS, RED ">>>         First name cannot be empty!        <<< " RESET);
@@ -39,7 +31,7 @@ void PhoneBook::add()
     newContact.setFirstName(input);
 
     std::cout << BLUE "Enter last name: " YELLOW;
-    if (!std::getline(std::cin, input) || input.empty()) {
+    if (!std::getline(std::cin, input) || input.empty() || is_all_space(input)) {
         std::system("clear");
         printMessage(PHONEBOOK);
         printMessage(SUCCESS, RED ">>>         Last name cannot be empty!         <<< " YELLOW RESET);
@@ -48,7 +40,7 @@ void PhoneBook::add()
     newContact.setLastName(input);
 
     std::cout << BLUE "Enter nickname: " YELLOW;
-    if (!std::getline(std::cin, input) || input.empty()) {
+    if (!std::getline(std::cin, input) || input.empty() || is_all_space(input)) {
         std::system("clear");
         printMessage(PHONEBOOK);
         printMessage(SUCCESS, RED ">>>           Nickname cannot be empty!        <<< " YELLOW);
@@ -57,7 +49,7 @@ void PhoneBook::add()
     newContact.setNickname(input);
 
     std::cout << BLUE "Enter phone number: " YELLOW;
-    if (!std::getline(std::cin, input) || input.empty()) {
+    if (!std::getline(std::cin, input) || input.empty() || is_all_space(input)) {
         std::system("clear");
         printMessage(PHONEBOOK);
         printMessage(SUCCESS, RED ">>>        Phone number cannot be empty!       <<< " YELLOW);
@@ -76,7 +68,7 @@ void PhoneBook::add()
     newContact.setPhoneNumber(input);
 
     std::cout << BLUE "Enter darkest secret: " YELLOW;
-    if (!std::getline(std::cin, input) || input.empty()) {
+    if (!std::getline(std::cin, input) || input.empty() || is_all_space(input)) {
         std::system("clear");
         printMessage(PHONEBOOK);
         printMessage(SUCCESS, RED ">>>       Darkest secret cannot be empty!      <<< " RESET);
@@ -89,8 +81,15 @@ void PhoneBook::add()
     if (contactCount < 8)
         contactCount++;
     std::system("clear");
-    printMessage(PHONEBOOK);
+    printMessage(PHONEBOOK);    
     printMessage(SUCCESS, GREEN ">>>         Contact added successfully!        <<<");
+}
+
+static void printInvalidIndexMessage()
+{
+    system("clear");
+    printMessage(PHONEBOOK);
+    std::cout << RED ">>>                Invalid index.              <<<" RESET << std::endl;
 }
 
 void PhoneBook::search()
@@ -102,37 +101,29 @@ void PhoneBook::search()
         std::cout << RED ">>>           No Contacts Saved Yet!           <<< " RESET "\n";
         return;
     }
-    std::system("clear");
+    system("clear");
     displayTable();
     std::cout << YELLOW <<"\n>>>     Enter index of the contact to view.    <<<\n" BLUE;
+    std::cout << BLUE <<"<<<                   [BACK]                   >>>\n" BLUE;
     std::string line;
     std::getline(std::cin, line);
-    if (line.empty())
+    if (line == "BACK")
     {
         system("clear");
         printMessage(PHONEBOOK);
-        std::cout << RED ">>>                Invalid index.              <<<" RESET << std::endl;
-        return;
+        return ;
     }
+    if (line.empty())
+        return (printInvalidIndexMessage());
     int idx = 0;
     for (size_t i = 0; i < line.size(); i++)
     {
         if (!isdigit(line[i]))
-        {
-            system("clear");
-            printMessage(PHONEBOOK);
-            std::cout << RED ">>>                Invalid index.              <<<" RESET << std::endl;
-            return;
-        }
+            return (printInvalidIndexMessage());
         idx = idx * 10 + (line[i] - '0');
     }
     if (idx < 0 || idx >= contactCount)
-    {
-        system("clear");
-        printMessage(PHONEBOOK);
-        std::cout << RED ">>>                Invalid index.              <<<" RESET << std::endl;
-        return;
-    }
+        return (printInvalidIndexMessage());
     system("clear");
     displayContact(idx);
 }
@@ -155,19 +146,17 @@ void PhoneBook::displayTable()
               << std::setw(5) << "Index" << "|"
               << std::setw(12) << "First Name" << "|"
               << std::setw(12) << "Last Name" << "|"
-              << std::setw(12) << "Nickname"
-              << RESET << std::endl;
+              << std::setw(12) << "Nickname" << RESET << std::endl;
     std::cout <<  BLUE << "--------------------------------------------------" RESET "\n";
     for (int i = 0; i < contactCount; i++)
     {
         std::cout << YELLOW << std::setw(5) << i << RESET "|"
-                  << YELLOW << std::setw(12) 
+                  << YELLOW << std::setw(12)
                   << formatfield(contacts[i].getFirstName()) << RESET "|"
                   << YELLOW << std::setw(12) 
                   << formatfield(contacts[i].getLastName()) << RESET "|"
                   << YELLOW << std::setw(12) 
-                  << formatfield(contacts[i].getNickname()) << RESET
-                  << std::endl;
+                  << formatfield(contacts[i].getNickname()) << RESET << std::endl;
     }
     std::cout << BLUE << "--------------------------------------------------" RESET;
 }
@@ -176,15 +165,14 @@ void PhoneBook::displayContact(int index)
 {
     if (index < 0 || index >= contactCount)
     {
-        std::cout << RED ">>> Invalid index. <<<" RESET << std::endl;
+        std::cout << RED ">>> Invalid index. <<<" << RESET << std::endl;
         return;
     }
     const Contact &c = contacts[index];
     std::cout << YELLOW
               << "--------------------------------------------------\n"
               << "                 CONTACT DETAILS                 \n"
-              << "--------------------------------------------------"
-              << RESET "\n";
+              << "--------------------------------------------------" << RESET "\n";
     std::cout << BLUE "First Name:     " RESET YELLOW << c.getFirstName() << RESET "\n";
     std::cout << BLUE "Last Name:      " RESET YELLOW << c.getLastName() << RESET "\n";
     std::cout << BLUE "Nickname:       " RESET YELLOW << c.getNickname() << RESET "\n";
