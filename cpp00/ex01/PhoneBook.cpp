@@ -57,7 +57,7 @@ void PhoneBook::add()
     }
     for (int i = 0; i < input[i]; i++) 
     {
-        if (!isdigit(input[i]) && input[i] != ' ' && !is_all_space(input)) 
+        if (!isdigit(input[i]) && input[i] != ' ' && !is_all_space(input))
         {
             std::system("clear");
             printMessage(PHONEBOOK);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
+/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 03:34:20 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/10/30 03:36:46 by ilyas-guney      ###   ########.fr       */
+/*   Updated: 2025/11/17 22:13:34 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int Account::checkAmount() const
 void Account::displayStatus() const 
 {
     _displayTimestamp();
-    std::cout << "index:" << _accountIndex << ";amount:" << _amount 
+    std::cout << "index:" << _accountIndex << ";amount:" << _amount
     << ";deposits:" << _nbDeposits << ";withdrawals:" << _nbWithdrawals << std::endl;
 }
 
