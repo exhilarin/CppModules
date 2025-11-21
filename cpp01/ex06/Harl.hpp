@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-enum Message {DEBUG, INFO, WARNING, ERROR};
+enum level {DEBUG, INFO, WARNING, ERROR};
 
 class Harl
 {
@@ -14,7 +14,7 @@ class Harl
         void warning(void);
         void error(void);
     public:
-        void complain(Message level);
+        void complain(char *av[]);
 };
 
 #endif

@@ -32,19 +32,24 @@ void Harl::error(void)
               << "I want to speak to the manager now." << std::endl << std::endl;
 }
 
-void Harl::complain(Message level)
+
+void Harl::complain(char *av[])
 {
-    switch (level)
+    int i = 4;
+    std::string Message[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    while (i--)
+    {
+        if (av[1] == Message[i])
+            break;
+    }
+    switch (i)
     {
         case DEBUG:
             debug();
-            break;
         case INFO:
             info();
-            break;
         case WARNING:
             warning();
-            break;
         case ERROR:
             error();
             break;
