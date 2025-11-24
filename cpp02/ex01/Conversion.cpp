@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Conversion.cpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ilyas-guney <ilyas-guney@student.42.fr>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/24 23:56:28 by ilyas-guney       #+#    #+#             */
-/*   Updated: 2025/10/26 03:01:41 by ilyas-guney      ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "Fixed.hpp"
 
@@ -21,7 +10,7 @@ Fixed::Fixed(int const n)
 Fixed::Fixed(float const f)
 {
     std::cout << "Float constructor called\n";
-    this->setRawBits(roundf(f * (1 << _fractionalBits)));
+    setRawBits(roundf(f * (1 << _fractionalBits)));
 }
 
 float Fixed::toFloat(void) const
