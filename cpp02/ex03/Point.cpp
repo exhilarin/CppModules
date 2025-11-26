@@ -10,21 +10,18 @@ Point::Point(const Point &otherClass) : _x(otherClass._x), _y(otherClass._y) {}
 Point &Point::operator=(const Point &otherClass)
 {
     if (this != &otherClass)
-    {
-        this->_x = otherClass._x;
-        this->_y = otherClass._y;
-    }
+        return *this;
     return *this;
 }
 
 Point::~Point() {}
 
-const Fixed::Fixed &getx()
+const Fixed	&Point::getx(void)const
 {
-    return _x;
+	return (this->_x);
 }
 
-const Fixed &gety() const
+const Fixed	&Point::gety(void)const
 {
-    return _y;
+	return (this->_y);
 }

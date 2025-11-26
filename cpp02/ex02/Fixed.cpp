@@ -18,10 +18,7 @@ Fixed &Fixed::operator=(const Fixed &otherClass)
     return *this;
 }
 
-Fixed::~Fixed()
-{
-    
-}
+Fixed::~Fixed() {}
 
 int Fixed::getRawBits(void) const
 {
