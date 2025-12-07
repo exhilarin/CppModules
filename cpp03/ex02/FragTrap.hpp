@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 13:38:57 by iguney            #+#    #+#             */
-/*   Updated: 2025/10/27 15:58:09 by iguney           ###   ########.fr       */
+/*   Updated: 2025/12/07 01:20:34 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FRAGTRAP_HPP
 
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
 
 class FragTrap : public ClapTrap
 {

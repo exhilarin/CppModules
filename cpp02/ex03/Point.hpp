@@ -17,11 +17,8 @@ class Point
         Point &operator=(const Point &otherClass);
         ~Point();
 
-        bool  bsp( Point const a, Point const b, Point const c, Point const point);
         const Fixed &getx() const;
         const Fixed &gety() const;
 };
-
-std::ostream	&operator<<(std::ostream &out, Point const point);
 
 #endif
