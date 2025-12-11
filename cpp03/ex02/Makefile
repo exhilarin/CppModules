@@ -1,4 +1,4 @@
-NAME = ClapTrap
+NAME = FragTrap
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
