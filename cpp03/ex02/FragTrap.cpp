@@ -1,16 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   FragTrap.cpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 13:38:53 by iguney            #+#    #+#             */
-/*   Updated: 2025/10/27 15:58:19 by iguney           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "FragTrap.hpp"
+
+FragTrap::FragTrap()
+{
+    _name = "Default";
+    _hitPoints = 100;
+    _energyPoint = 100;
+    _attackDamage = 30;
+    std::cout << "FragTrap " << _name << " constructed!\n";
+}
 
 FragTrap::FragTrap(std::string _name) : ClapTrap(_name)
 {

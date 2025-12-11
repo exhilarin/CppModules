@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 00:00:03 by iguney            #+#    #+#             */
-/*   Updated: 2025/12/07 04:13:36 by iguney           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
@@ -18,6 +7,7 @@
 class ScavTrap : virtual public ClapTrap
 {
     public:
+        ScavTrap();
         ScavTrap(std::string _name);
         ScavTrap(const ScavTrap &otherClass);
         ScavTrap &operator=(const ScavTrap &otherClass);

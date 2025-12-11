@@ -1,16 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/26 14:37:05 by iguney            #+#    #+#             */
-/*   Updated: 2025/10/27 03:26:06 by iguney           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap()
+    : _name("Default"), _hitPoints(10), _energyPoint(10), _attackDamage (0)
+{
+    std::cout << "ClapTrap " << _name << " constructed!\n";
+}
 
 ClapTrap::ClapTrap(std::string _name)
     : _name(_name), _hitPoints(10), _energyPoint(10), _attackDamage (0)
@@ -48,7 +43,7 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::attack(const std::string& target)
 {
-    if (_attackDamage == 0)
+    if (_attackDamage <= 0)
         std::cout << "ClapTrap " << _name << " has no attack damage to deal!" << std::endl;
     else if (_energyPoint <= 0)
         std::cout << "ClapTrap " << _name << " has no energy to attack!\n";

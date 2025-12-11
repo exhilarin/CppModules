@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/26 14:19:06 by iguney            #+#    #+#             */
-/*   Updated: 2025/12/07 00:27:15 by iguney           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef CLAPTRAP_HPP
 #define CLAPTRAP_HPP
@@ -24,6 +13,7 @@ class ClapTrap
         int         _attackDamage;
 
     public:
+        ClapTrap();
         ClapTrap(std::string _name);
         ClapTrap(const ClapTrap &otherClass);
         ClapTrap &operator=(const ClapTrap &otherClass);

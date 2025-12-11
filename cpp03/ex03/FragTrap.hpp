@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 13:38:57 by iguney            #+#    #+#             */
-/*   Updated: 2025/12/07 04:13:24 by iguney           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef FRAGTRAP_HPP
 # define FRAGTRAP_HPP
@@ -18,6 +7,7 @@
 class FragTrap : virtual public ClapTrap
 {
     public:
+        FragTrap();
         FragTrap(std::string _name);
         FragTrap(const FragTrap &otherClass);
         FragTrap &operator=(const FragTrap &otherClass);
