@@ -1,35 +1,29 @@
 
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
-int main() 
+int main()
 {
-    std::cout << "===== TEST 1: ClapTrap =====" << std::endl;
-    {
-        ClapTrap clap("Clappy");
-        clap.attack("target dummy");
-        clap.takeDamage(5);
-        clap.beRepaired(3);
-    } // ClapTrap destructor çağrılmalı
+    std::cout << "\n=== Test 1: Default Constructor ===\n";
+    DiamondTrap d1;
+    d1.whoAmI();
+    d1.attack("Enemy A");
 
-    std::cout << std::endl << "===== TEST 2: ScavTrap =====" << std::endl;
-    {
-        ScavTrap scav("Scavvy");
-        scav.attack("enemy");
-        scav.takeDamage(20);
-        scav.beRepaired(10);
-        scav.guardGate();
-    } // ScavTrap ve ClapTrap destructor'ları sırasıyla çağrılmalı
+    std::cout << "\n=== Test 2: Name Constructor ===\n";
+    DiamondTrap d2("Warrior");
+    d2.whoAmI();
+    d2.attack("Enemy B");
 
-    std::cout << std::endl << "===== TEST 3: FragTrap =====" << std::endl;
-    {
-        FragTrap frag("Fraggy");
-        frag.attack("evil bot");
-        frag.takeDamage(40);
-        frag.beRepaired(25);
-        frag.highFivesGuys();
-    } // FragTrap ve ClapTrap destructor'ları sırasıyla çağrılmalı
+    std::cout << "\n=== Test 3: Copy Constructor ===\n";
+    DiamondTrap d3(d2);
+    d3.whoAmI();
+    d3.attack("Enemy C");
 
-    std::cout << std::endl << "===== ALL TESTS DONE =====" << std::endl;
+    std::cout << "\n=== Test 4: Assignment Operator ===\n";
+    DiamondTrap d4;
+    d4 = d2;
+    d4.whoAmI();
+    d4.attack("Enemy D");
+
+    std::cout << "\n=== End of Scope, Destructors will be called ===\n";
     return 0;
 }
