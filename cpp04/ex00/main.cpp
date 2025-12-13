@@ -2,6 +2,8 @@
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
+// #include "WrongAnimal.hpp"
+// #include "WrongCat.hpp"
 
 int main()
 {
@@ -13,6 +15,5 @@ int main()
     i->makeSound(); //will output the cat sound!
     j->makeSound();
     meta->makeSound();
-
     return 0;
 }

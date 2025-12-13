@@ -26,6 +26,11 @@ Dog::~Dog()
     std::cout << "Dog destructor called!\n";
 }
 
+std::string Dog::getType() const
+{
+    return type;
+}
+
 void Dog::makeSound() const
 {
     std::cout << "Woof woof :b\n";
