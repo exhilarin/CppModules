@@ -2,50 +2,48 @@
 #include <iostream>
 
 DiamondTrap::DiamondTrap()
-    : ClapTrap("Default_clap_name"), ScavTrap(), FragTrap()
+    : ClapTrap("Default_clap_name"), ScavTrap(), FragTrap(), _name("Default")
 {
-    _name = "Default";
-    _hitPoints = FragTrap::_hitPoints;
-    _energyPoint = ScavTrap::_energyPoint;
-    _attackDamage = FragTrap::_attackDamage;
-    std::cout << "DiamondTrap " << _name << " constructed!\n";
+    _hitPoints = 100;
+    _energyPoints = 50;
+    _attackDamage = 30;
+    std::cout << "DiamondTrap " << _name << " constructed\n";
 }
 
-DiamondTrap::DiamondTrap(std::string name)
-    : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name)
+DiamondTrap::DiamondTrap(std::string _name)
+    : ClapTrap(_name + "_clap_name"), ScavTrap(), FragTrap(), _name(_name)
 {
-    _name = name;
-    _hitPoints = FragTrap::_hitPoints;
-    _energyPoint = ScavTrap::_energyPoint;
-    _attackDamage = FragTrap::_attackDamage;
-    std::cout << "DiamondTrap " << _name << " constructed!\n";
+    _hitPoints = 100;
+    _energyPoints = 50;
+    _attackDamage = 30;
+    std::cout << "DiamondTrap " << _name << " constructed\n";
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &otherClass)
-    : ClapTrap(otherClass), ScavTrap(otherClass), FragTrap(otherClass)
+DiamondTrap::DiamondTrap(const DiamondTrap &other)
+    : ClapTrap(other._name + "_clap_name"), ScavTrap(other), FragTrap(other), _name(other._name)
 {
-    _name = otherClass._name;
-    std::cout << "DiamondTrap " << _name << " copy constructed!\n";
+    _hitPoints = other._hitPoints;
+    _energyPoints = other._energyPoints;
+    _attackDamage = other._attackDamage;
+    std::cout << "DiamondTrap " << _name << " copy constructed\n";
 }
 
-DiamondTrap &DiamondTrap::operator=(const DiamondTrap &otherClass)
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other)
 {
-    if (this != &otherClass)
+    if (this != &other)
     {
-        ClapTrap::operator=(otherClass);
-        ScavTrap::operator=(otherClass);
-        FragTrap::operator=(otherClass);
-        _name = otherClass._name;
-
-        std::cout << "DiamondTrap " << _name
-                  << " assigned from " << otherClass._name << "!\n";
+        ClapTrap::_name = other._name + "_clap_name";
+        _hitPoints = other._hitPoints;
+        _energyPoints = other._energyPoints;
+        _attackDamage = other._attackDamage;
+        _name = other._name;
     }
     return *this;
 }
 
 DiamondTrap::~DiamondTrap()
 {
-    std::cout << "DiamondTrap " << _name << " destroyed!\n";
+    std::cout << "DiamondTrap " << _name << " destroyed\n";
 }
 
 void DiamondTrap::attack(const std::string &target)
@@ -55,6 +53,6 @@ void DiamondTrap::attack(const std::string &target)
 
 void DiamondTrap::whoAmI() const
 {
-    std::cout << "I am DiamondTrap: " << _name
+    std::cout << "DiamondTrap name: " << _name
               << ", ClapTrap name: " << ClapTrap::_name << "\n";
 }

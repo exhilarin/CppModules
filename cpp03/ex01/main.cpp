@@ -22,7 +22,7 @@ int main()
     scav3 = scav2;
 
     std::cout << "\n=== Testing energy depletion ===" << std::endl;
-    for (int i = 0; i < 55; ++i)  // scav1’in enerjisini bitirmek için
+    for (int i = 0; i < 10; ++i)
         scav1.attack("target");
 
     std::cout << "\n=== End of test ===" << std::endl;

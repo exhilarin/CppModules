@@ -5,7 +5,7 @@ ScavTrap::ScavTrap()
 {
     _name = "Default";
     _hitPoints = 100;
-    _energyPoint = 50;
+    _energyPoints = 50;
     _attackDamage = 20;
     std::cout << "ScavTrap " << _name << " constructed!\n";
 }
@@ -13,7 +13,7 @@ ScavTrap::ScavTrap()
 ScavTrap::ScavTrap(std::string _name) : ClapTrap(_name)
 {
     _hitPoints = 100;
-    _energyPoint = 50;
+    _energyPoints = 50;
     _attackDamage = 20;
     std::cout << "ScavTrap " << _name << " constructed!\n";
 }
@@ -43,7 +43,7 @@ ScavTrap::~ScavTrap()
 
 void ScavTrap::attack(const std::string& target)
 {
-    if (_energyPoint <= 0)
+    if (_energyPoints <= 0)
         std::cout << "ScavTrap " << _name << " has no energy to attack!\n";
     else if (_hitPoints <= 0)
         std::cout << "ScavTrap " << _name << " is out of hit points and can't attack!\n";
@@ -51,7 +51,7 @@ void ScavTrap::attack(const std::string& target)
     {
         std::cout << "ScavTrap " << _name << " attacks " << target
                   << ", causing " << _attackDamage << " points of damage!\n";
-        _energyPoint--;
+        _energyPoints--;
     }
 }
 
