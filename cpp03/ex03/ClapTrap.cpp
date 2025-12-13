@@ -2,44 +2,28 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap()
-    : _name("Default"), _hitPoints(10), _energyPoints(10), _attackDamage (0)
-{
-    std::cout << "ClapTrap " << _name << " constructed!\n";
-}
+    : _name("Default"), _hitPoints(10), _energyPoints(10), _attackDamage (0) {}
 
 ClapTrap::ClapTrap(std::string _name)
-    : _name(_name), _hitPoints(10), _energyPoints(10), _attackDamage (0)
-{
-    std::cout << "ClapTrap " << _name << " constructed!\n";
-}
+    : _name(_name), _hitPoints(10), _energyPoints(10), _attackDamage (0) {}
 
 ClapTrap::ClapTrap(const ClapTrap &otherClass) 
     : _name(otherClass._name), _hitPoints(otherClass._hitPoints),
-        _energyPoints(otherClass._energyPoints), _attackDamage(otherClass._attackDamage)
-{
-    std::cout << "ClapTrap " << _name << " copy constructed!\n";
-}
+        _energyPoints(otherClass._energyPoints), _attackDamage(otherClass._attackDamage) {}
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &otherClass)
 {
     if (this != &otherClass)
     {
-        std::cout << "ClapTrap " << _name << " assigned to " 
-            << otherClass._name << "!" << std::endl;
         _name = otherClass._name;
         _hitPoints = otherClass._hitPoints;
         _energyPoints = otherClass._energyPoints;
         _attackDamage = otherClass._attackDamage;
     }
-    else
-        std::cout << "ClapTrap " << _name << " is already assigned to itself." << std::endl;
     return *this;
 }
 
-ClapTrap::~ClapTrap()
-{
-    std::cout << "ClapTrap " << _name << " destroyed!\n";
-}
+ClapTrap::~ClapTrap() {}
 
 void ClapTrap::attack(const std::string& target)
 {

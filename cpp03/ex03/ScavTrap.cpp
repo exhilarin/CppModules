@@ -7,7 +7,6 @@ ScavTrap::ScavTrap()
     _hitPoints = 100;
     _energyPoints = 50;
     _attackDamage = 20;
-    std::cout << "ScavTrap " << _name << " constructed!\n";
 }
 
 ScavTrap::ScavTrap(std::string _name) : ClapTrap(_name)
@@ -15,31 +14,18 @@ ScavTrap::ScavTrap(std::string _name) : ClapTrap(_name)
     _hitPoints = 100;
     _energyPoints = 50;
     _attackDamage = 20;
-    std::cout << "ScavTrap " << _name << " constructed!\n";
 }
 
-ScavTrap::ScavTrap(const ScavTrap &otherClass) : ClapTrap(otherClass)
-{
-    std::cout << "ScavTrap " << _name << " copy constructed!\n";
-}
+ScavTrap::ScavTrap(const ScavTrap &otherClass) : ClapTrap(otherClass) {}
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &otherClass)
 {
     if (this != &otherClass)
-    {
         ClapTrap::operator=(otherClass);
-        std::cout << "ScavTrap " << this->_name << " assigned to " 
-            << otherClass._name << "!" << std::endl;
-    }
-    else
-        std::cout << "ScavTrap " << _name << " is already assigned to itself." << std::endl;
     return *this;
 }
 
-ScavTrap::~ScavTrap()
-{
-    std::cout << "ScavTrap " << _name << " destroyed!\n";
-}
+ScavTrap::~ScavTrap() {}
 
 void ScavTrap::attack(const std::string& target)
 {
