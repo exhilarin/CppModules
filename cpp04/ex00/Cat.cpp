@@ -6,7 +6,7 @@ Cat::Cat() : type("Cat")
     std::cout << "Cat constructed!\n";
 }
 
-Cat::Cat(const Cat &other) : type(other.type)
+Cat::Cat(const Cat &other) : Animal(other), type(other.type)
 {
     std::cout << "Cat copy constructed!\n";
 }
