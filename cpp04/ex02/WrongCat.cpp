@@ -1,12 +1,13 @@
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat() : type("WrongCat")
+WrongCat::WrongCat()
 {
+    type = "WrongCat";
     std::cout << "WrongCat constructed!\n";
 }
 
-WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other), type(other.type)
+WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other)
 {
     std::cout << "WrongCat copy constructed!\n";
 }
