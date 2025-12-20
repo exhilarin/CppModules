@@ -69,6 +69,7 @@ void Character::unequip(int idx) {
         return ;
     if (inventory[idx] == NULL)
         return ;
+    delete inventory[idx];
     inventory[idx] = NULL;
 }
 
