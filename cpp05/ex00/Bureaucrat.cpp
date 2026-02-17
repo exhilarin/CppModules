@@ -1,17 +1,17 @@
 
-#include "Bureaucrat.hpp"
+# include "Bureaucrat.hpp"
 
-const char* GradeTooHighException::what() const throw()
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
     return "Grade is too high.";
 }
 
-const char* GradeTooLowException::what() const throw()
+const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
     return "Grade is too low.";
 }
 
-Bureaucrat::Bureaucrat(const std::string name, int grade) : name(name)
+Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name)
 {
     if (grade < 1)
         throw GradeTooHighException();
