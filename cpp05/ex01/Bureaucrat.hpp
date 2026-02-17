@@ -1,7 +1,8 @@
 
-#ifndef BUREAUCRAT
-# define BUREAUCRAT
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
+class Form;
 #include <iostream>
 #include <exception>
 
@@ -22,6 +23,7 @@ class Bureaucrat
         
         void                increaseGrade();
         void                decreaseGrade();
+        void                signForm(Form &form);
 
         class GradeTooHighException : public std::exception
         {
