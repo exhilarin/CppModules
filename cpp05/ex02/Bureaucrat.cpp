@@ -1,6 +1,6 @@
 
 # include "Bureaucrat.hpp"
-# include "Form.hpp"
+# include "AForm.hpp"
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
@@ -62,7 +62,7 @@ std::ostream& operator<<(std::ostream &os, const Bureaucrat &b)
     return os;
 }
 
-void Bureaucrat::signForm(Form &f)
+void Bureaucrat::signForm(AForm &f)
 {
     try
     {

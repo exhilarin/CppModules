@@ -23,12 +23,12 @@ RobotomyRequestForm::~RobotomyRequestForm() {}
 void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
     checkExecution(executor);
-    std::cout << "Trrrummm... " << std::endl;
-    std::cout << "Trrrummm... " << std::endl;
+    std::cout << "Trrrummm... ";
+    std::cout << "Trrrummm... ";
     std::cout << "Trrrummm! " << std::endl;
 
-    std::cout << "Trak... " << std::endl;
-    std::cout << "Tiki... " << std::endl;
+    std::cout << "Trak... ";
+    std::cout << "Tiki... ";
     std::cout << "Tak! " << std::endl;
 
     int random = std::rand() % 2;

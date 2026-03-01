@@ -30,11 +30,11 @@ int main()
 
     // Test execute işlemleri
     std::cout << "\n--- Executing Forms ---\n";
-    try { low.executeForm(shrubbery); }   catch (std::exception &e) { std::cerr << e.what() << std::endl; }
-    try { high.executeForm(shrubbery); }  catch (std::exception &e) { std::cerr << e.what() << std::endl; }
-    try { mid.executeForm(robotomy); }    catch (std::exception &e) { std::cerr << e.what() << std::endl; }
-    try { high.executeForm(robotomy); }   catch (std::exception &e) { std::cerr << e.what() << std::endl; }
-    try { high.executeForm(pardon); }     catch (std::exception &e) { std::cerr << e.what() << std::endl; }
+    try {shrubbery.execute(high);}   catch (std::exception &e) { std::cerr << e.what() << std::endl; }
+    try {robotomy.execute(mid);}  catch (std::exception &e) { std::cerr << e.what() << std::endl; }
+    try {robotomy.execute(high);}    catch (std::exception &e) { std::cerr << e.what() << std::endl; }
+    try {pardon.execute(high);}   catch (std::exception &e) { std::cerr << e.what() << std::endl; }
+    try {pardon.execute(low);}     catch (std::exception &e) { std::cerr << e.what() << std::endl; }
 
     return 0;
 }
