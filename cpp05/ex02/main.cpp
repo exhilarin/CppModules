@@ -8,27 +8,23 @@
 
 int main()
 {
-    std::srand(std::time(NULL)); // Random seed, C++98
+    std::srand(std::time(NULL));
 
-    // Bureaucrat oluştur
     Bureaucrat low("Bob", 150);
     Bureaucrat mid("Alice", 50);
     Bureaucrat high("Charles", 1);
 
-    // Formlar oluştur
     ShrubberyCreationForm shrubbery("home");
     RobotomyRequestForm robotomy("Bender");
     PresidentialPardonForm pardon("Marvin");
 
-    // Test sign işlemleri
     std::cout << "\n--- Signing Forms ---\n";
-    low.signForm(shrubbery);      // fail
-    high.signForm(shrubbery);     // success
-    mid.signForm(robotomy);       // fail
-    high.signForm(robotomy);      // success
-    high.signForm(pardon);        // success
+    low.signForm(shrubbery);     
+    high.signForm(shrubbery);    
+    mid.signForm(robotomy);      
+    high.signForm(robotomy);     
+    high.signForm(pardon);       
 
-    // Test execute işlemleri
     std::cout << "\n--- Executing Forms ---\n";
     try {shrubbery.execute(high);}   catch (std::exception &e) { std::cerr << e.what() << std::endl; }
     try {robotomy.execute(mid);}  catch (std::exception &e) { std::cerr << e.what() << std::endl; }

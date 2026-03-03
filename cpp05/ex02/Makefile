@@ -1,4 +1,4 @@
-NAME = Form
+NAME = ex02
 
 SRCS = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 CXX = c++
