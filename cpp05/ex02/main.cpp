@@ -26,11 +26,11 @@ int main()
     high.signForm(pardon);       
 
     std::cout << "\n--- Executing Forms ---\n";
-    try {shrubbery.execute(high);}   catch (std::exception &e) { std::cerr << e.what() << std::endl; }
-    try {robotomy.execute(mid);}  catch (std::exception &e) { std::cerr << e.what() << std::endl; }
-    try {robotomy.execute(high);}    catch (std::exception &e) { std::cerr << e.what() << std::endl; }
-    try {pardon.execute(high);}   catch (std::exception &e) { std::cerr << e.what() << std::endl; }
-    try {pardon.execute(low);}     catch (std::exception &e) { std::cerr << e.what() << std::endl; }
+    low.executeForm(shrubbery);     
+    high.executeForm(shrubbery);    
+    mid.executeForm(robotomy);      
+    high.executeForm(robotomy);     
+    high.executeForm(pardon); 
 
     return 0;
 }
