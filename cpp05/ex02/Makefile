@@ -15,6 +15,7 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+	rm -rf home_shrubbery
 
 re: fclean all
 
