@@ -102,5 +102,4 @@ void Bureaucrat::executeForm(AForm const &f)
                   << e.what()
                   << std::endl;
     }
-    
 }
