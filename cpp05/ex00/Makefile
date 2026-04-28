@@ -1,4 +1,4 @@
-NAME = ex01
+NAME = ex00
 
 SRCS = main.cpp Bureaucrat.cpp
 CXX = c++
