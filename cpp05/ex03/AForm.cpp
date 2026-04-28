@@ -17,6 +17,11 @@ const char* AForm::AlreadySignedException::what() const throw()
     return "AForm is already signed.";
 }
 
+const char* AForm::NotSignedException::what() const throw()
+{
+    return "AForm is not signed.";
+}
+
 AForm::AForm(const std::string name, int gradeToSign, int gradeToExecute) 
     : name(name), isSigned(false), gradeToSign(gradeToSign), gradeToExecute(gradeToExecute)
 {
@@ -71,7 +76,7 @@ void AForm::beSigned(const Bureaucrat &b)
 void AForm::checkExecution(const Bureaucrat &executor) const
 {
     if (!this->isSigned)
-        throw GradeTooLowException();
+        throw NotSignedException();
     if (executor.getGrade() > this->gradeToExecute)
         throw GradeTooLowException();
 }
