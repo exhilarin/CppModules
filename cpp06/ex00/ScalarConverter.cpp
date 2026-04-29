@@ -1,22 +1,21 @@
-
 #include "ScalarConverter.hpp"
 
 bool ScalarConverter::handlePseudoLiteral(const std::string &literal)
 {
     if (literal == "nanf" || literal == "+inff" || literal == "-inff")
     {
-        std::cout << "char: impossible" << std::endl;
-        std::cout << "int: impossible" << std::endl;
-        std::cout << "float: " << literal << std::endl;
-        std::cout << "double: " << literal.substr(0, literal.size() - 1) << std::endl;
+        std::cout << "char: impossible\n";
+        std::cout << "int: impossible\n";
+        std::cout << "float: " << literal << "\n";
+        std::cout << "double: " << literal.substr(0, literal.size() - 1) << "\n";
         return true;
     }
     else if (literal == "nan" || literal == "+inf" || literal == "-inf")
     {
-        std::cout << "char: impossible" << std::endl;
-        std::cout << "int: impossible" << std::endl;
-        std::cout << "float: " << literal << "f" << std::endl;
-        std::cout << "double: " << literal << std::endl;
+        std::cout << "char: impossible\n";
+        std::cout << "int: impossible\n";
+        std::cout << "float: " << literal << "f\n";
+        std::cout << "double: " << literal << "\n";
         return true;
     }
     return false;
@@ -25,20 +24,20 @@ bool ScalarConverter::handlePseudoLiteral(const std::string &literal)
 static void printAll(char c, int i, float f, double d, int charFlag, bool intImpossible)
 {
     if (charFlag == 0)
-        std::cout << "char: '" << c << "'" << std::endl;
+        std::cout << "char: '" << c << "'\n";
     else if (charFlag == 1)
-        std::cout << "char: Non displayable" << std::endl;
+        std::cout << "char: Non displayable\n";
     else
-        std::cout << "char: impossible" << std::endl;
+        std::cout << "char: impossible\n";
 
     if (intImpossible)
-        std::cout << "int: impossible" << std::endl;
+        std::cout << "int: impossible\n";
     else
-        std::cout << "int: " << i << std::endl;
+        std::cout << "int: " << i << "\n";
 
     std::cout << std::fixed << std::setprecision(1);
-    std::cout << "float: " << f << "f" << std::endl;
-    std::cout << "double: " << d << std::endl;
+    std::cout << "float: " << f << "f\n";
+    std::cout << "double: " << d << "\n";
 }
 
 bool ScalarConverter::handleCharLiteral(const std::string &literal)
@@ -47,7 +46,7 @@ bool ScalarConverter::handleCharLiteral(const std::string &literal)
 
     if (literal.length() == 3 && literal[0] == '\'' && literal[2] == '\'')
         c = literal[1];
-    else if (literal.length() == 1)
+    else if (literal.length() == 1 && !std::isdigit(literal[0]))
         c = literal[0];
     else
         return false;
@@ -76,13 +75,14 @@ bool ScalarConverter::handleNumericLiteral(const std::string &literal)
         value = std::strtof(literal.c_str(), &end);
     else
         value = std::strtod(literal.c_str(), &end);
+
     if ((*end != '\0' && *end != 'f') || (*end == 'f' && *(end + 1) != '\0'))
         return false;
 
     if (errno == ERANGE)
     {
         printAll(0, 0, 0.0f, 0.0, 2, true);
-        return false;
+        return true;
     }
 
     char c = static_cast<char>(value);
@@ -113,7 +113,7 @@ void ScalarConverter::convert(std::string literal)
     if (handleNumericLiteral(literal))
         return;
 
-    std::cout << "Invalid input!" << std::endl;
+    std::cout << "Invalid input!\n";
 }
 
 ScalarConverter::ScalarConverter() {}
