@@ -43,10 +43,15 @@ static void printAll(char c, int i, float f, double d, int charFlag, bool intImp
 
 bool ScalarConverter::handleCharLiteral(const std::string &literal)
 {
-    if (literal.length() != 1)
+    char c;
+
+    if (literal.length() == 3 && literal[0] == '\'' && literal[2] == '\'')
+        c = literal[1];
+    else if (literal.length() == 1)
+        c = literal[0];
+    else
         return false;
 
-    char c = literal[0];
     int i = static_cast<int>(c);
     float f = static_cast<float>(c);
     double d = static_cast<double>(c);
@@ -64,12 +69,15 @@ bool ScalarConverter::handleNumericLiteral(const std::string &literal)
         return false;
 
     errno = 0;
+    char *end;
     double value;
 
     if (literal[literal.size() - 1] == 'f')
-        value = std::strtof(literal.c_str(), 0);
+        value = std::strtof(literal.c_str(), &end);
     else
-        value = std::strtod(literal.c_str(), 0);
+        value = std::strtod(literal.c_str(), &end);
+    if ((*end != '\0' && *end != 'f') || (*end == 'f' && *(end + 1) != '\0'))
+        return false;
 
     if (errno == ERANGE)
     {
