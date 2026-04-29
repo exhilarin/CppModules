@@ -1,5 +1,5 @@
 
-NAME = ex00
+NAME = convert
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
