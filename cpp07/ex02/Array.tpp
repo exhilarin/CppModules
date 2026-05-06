@@ -2,8 +2,6 @@
 #ifndef ARRAY_TPP
 # define ARRAY_TPP
 
-#include "Array.hpp"
-
 template <typename T>
 Array<T>::Array() : array(NULL), _size(0) {}
 
@@ -21,7 +19,7 @@ Array<T> &Array<T>::operator=(const Array &other)
 {
     if (this != &other)
     {
-        delete [] array;
+        delete[] array;
         _size = other._size;
         array = new T[_size];
         for (unsigned int i = 0; i < _size; i++)
