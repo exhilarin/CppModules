@@ -18,14 +18,14 @@ Span::~Span() {}
 void Span::addNumber(int n)
 {
     if (_numbers.size() >= _maxCap)
-        throw std::runtime_error("Span is full!");
+        throw std::out_of_range("Span is full!");
     _numbers.push_back(n);
 }
 
 int Span::shortestSpan() const
 {
     if (_numbers.size() < 2)
-        throw std::runtime_error("Not enough numbers!");
+        throw std::logic_error("Not enough numbers!");
     std::vector<int> temp = _numbers;
     std::sort(temp.begin(), temp.end());
 
@@ -42,7 +42,7 @@ int Span::shortestSpan() const
 int Span::longestSpan() const
 {
     if (_numbers.size() < 2)
-        throw std::runtime_error("Not enough numbers!");
+        throw std::logic_error("Not enough numbers!");
     int max = *std::max_element(_numbers.begin(), _numbers.end());
     int min = *std::min_element(_numbers.begin(), _numbers.end());
     return (max - min);
