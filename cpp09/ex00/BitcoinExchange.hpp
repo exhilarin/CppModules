@@ -5,15 +5,14 @@
 # include <iostream>
 # include <cstdlib>
 # include <fstream>
-# include <sstream>
 # include <string>
+# include <sstream>
 # include <map>
 
 class BitcoinExchange
 {
     private:
-        std::map<std::string, double> _database;
-
+        std::map<std::string, double>   _database;
 
     public:
         BitcoinExchange();
@@ -21,9 +20,11 @@ class BitcoinExchange
         BitcoinExchange &operator=(const BitcoinExchange &other);
         ~BitcoinExchange();
 
-        void execute(const std::string &filename);
-        void loadDatabase(const std::string& file);
-        // void process(const std::string& file);
+        void Execute(const std::string &filename);
+        void LoadDatabase(const std::string &csv);
+        void Process(const std::string &filename);
+
+        double BitcoinExchange::getExchangeRate(const std::string &date);
 };
 
 #endif

@@ -18,7 +18,7 @@ Span::~Span() {}
 void Span::addNumber(int n)
 {
     if (_numbers.size() >= _maxCap)
-        throw std::out_of_range("Span is full!");
+        throw std::out_of_range("Span is full!"); 
     _numbers.push_back(n);
 }
 
