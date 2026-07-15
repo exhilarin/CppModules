@@ -45,11 +45,13 @@ static bool isValidDate(const std::string &date)
     if (date.length() != 10)
         return false;
     
-    for (int i = 0; i < date.length(); i++)
+    for (int i = 0; date[i]; i++)
     {
         if (i == 4 || i == 7)
+        {
             if (date[i] != '-')
                 return false;
+        }
         else
             if (!std::isdigit(date[i]))
                 return false;
@@ -150,7 +152,7 @@ void BitcoinExchange::Process(const std::string &filename)
         double rate = getExchangeRate(date);
         double result = amount * rate;
 
-        std::cout << date << " => " << value << " = " << result;
+        std::cout << date << " => " << value << " = " << result << std::endl;
     }
     input_file.close();
 }
