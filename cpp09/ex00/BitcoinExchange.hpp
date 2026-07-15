@@ -24,7 +24,7 @@ class BitcoinExchange
         void LoadDatabase(const std::string &csv);
         void Process(const std::string &filename);
 
-        double BitcoinExchange::getExchangeRate(const std::string &date);
+        double getExchangeRate(const std::string &date);
 };
 
 #endif
