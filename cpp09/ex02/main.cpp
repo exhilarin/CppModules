@@ -8,6 +8,17 @@ int main(int ac, char **av)
         std::cerr << "Error" << std::endl;
         return -1;
     }
-    PmergeMe program(av);
-    
+    try
+    {
+        PmergeMe pmergeme(av);
+
+        pmergeme.sortVector();
+        pmergeme.sortDeque();
+    }
+    catch(const std::exception &e)
+    {
+        std::cerr << e.what() << std::endl;
+        return -1;
+    }
+    return 0;
 }

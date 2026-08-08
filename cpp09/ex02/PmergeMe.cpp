@@ -1,6 +1,16 @@
 
 #include "PmergeMe.hpp"
 
+void PmergeMe::sortVector()
+{
+
+}
+
+void PmergeMe::sortDeque()
+{
+
+}
+
 int PmergeMe::processInput(char **av)
 {
     int num;
@@ -30,17 +40,9 @@ int PmergeMe::processInput(char **av)
 PmergeMe::PmergeMe(char **av)
 {
     if (!processInput(av))
-    {
-        std::cerr << "Error" << std::endl;
-        return ;
-    }
+            throw std::runtime_error("Error");
     std::cout << "Before : ";
-    for (int i = 0; av[i]; i++)
-        std::cout << _vector[i] << " ";
-    std::cout << std::endl;
-    std::sort(_vector.begin(), _vector.end());
-    std::cout << "After : ";
-    for (int i = 0; av[i]; i++)
+    for (int i = 0; i < (int)_vector.size(); i++)
         std::cout << _vector[i] << " ";
     std::cout << std::endl;
 }
