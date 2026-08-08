@@ -9,6 +9,7 @@
 # include <sstream>
 # include <vector>
 # include <deque>
+# include <ctime>
 # include <algorithm>
 
 class PmergeMe
@@ -17,17 +18,17 @@ class PmergeMe
         std::vector<int> _vector;
         std::deque<int> _deque;
 
+        int processInput(char **av);
+
     public:
         PmergeMe();
+        PmergeMe(char **av);
         PmergeMe(const PmergeMe &other);
         PmergeMe &operator=(const PmergeMe &other);
         ~PmergeMe();
 
-        PmergeMe(char **av);
-        int processInput(char **av);
-
-        // void sortVector();
-        // void sortDeque();
+        void sortVector();
+        void sortDeque();
 };
 
 #endif
