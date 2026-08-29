@@ -2,8 +2,6 @@
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
 
-# define MAX_INT 2147483647
-
 # include <iostream>
 # include <string>
 # include <sstream>
