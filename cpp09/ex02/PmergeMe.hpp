@@ -15,8 +15,12 @@ class PmergeMe
     private:
         std::vector<int> _vector;
         std::deque<int> _deque;
+        
+        int  processInput(char **av);
+        void PmergeMe::makePairs(std::vector<std::pair<int, int>> &pairs);
 
-        int processInput(char **av);
+        void sortVector();
+        void sortDeque();
 
     public:
         PmergeMe();
@@ -24,9 +28,6 @@ class PmergeMe
         PmergeMe(const PmergeMe &other);
         PmergeMe &operator=(const PmergeMe &other);
         ~PmergeMe();
-
-        void sortVector();
-        void sortDeque();
 };
 
 #endif
