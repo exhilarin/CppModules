@@ -12,7 +12,7 @@ int main(int ac, char **av)
     {
         PmergeMe pmergeme(av);
 
-        pmergeme.sortVector();
+        pmergeme.sortVector(pmergeme.getVector());
         // pmergeme.sortDeque();
     }
     catch(const std::exception &e)
