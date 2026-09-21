@@ -1,7 +1,7 @@
-
 #include "PmergeMe.hpp"
 
-static void seperatePair(std::vector<std::pair<int, int> > &pairs, std::vector<int> &large, std::vector<int> &small)
+template <typename T>
+static void seperatePair(const std::vector<std::pair<int, int> > &pairs, T &large, T &small)
 {
     for (size_t i = 0; i < pairs.size(); i++)
     {
@@ -10,24 +10,24 @@ static void seperatePair(std::vector<std::pair<int, int> > &pairs, std::vector<i
     }
 }
 
-static void makePairs(std::vector<int> &_vector, std::vector<std::pair<int, int> > &pairs, int &odd)
+template <typename T>
+static void makePairs(const T &_container, std::vector<std::pair<int, int> > &pairs, int &odd)
 {
-    for (size_t i = 0; i + 1 < _vector.size(); i += 2)
+    for (size_t i = 0; i + 1 < _container.size(); i += 2)
     {
-        if (_vector[i] < _vector[i + 1])
-            pairs.push_back(std::make_pair(_vector[i], _vector[i + 1]));
+        if (_container[i] < _container[i + 1])
+            pairs.push_back(std::make_pair(_container[i], _container[i + 1]));
         else
-            pairs.push_back(std::make_pair(_vector[i + 1], _vector[i]));
+            pairs.push_back(std::make_pair(_container[i + 1], _container[i]));
     }
-    if (_vector.size() % 2 != 0)
-        odd = _vector[_vector.size() - 1];
+    if (_container.size() % 2 != 0)
+        odd = _container[_container.size() - 1];
 }
 
 static void makeJacobsthalOrder(std::vector<size_t> &order, size_t size)
 {
     if (size == 0)
         return ;
-
     order.push_back(0);
     size_t previous = 1;
     size_t previous_previous = 1;
@@ -47,42 +47,43 @@ static void makeJacobsthalOrder(std::vector<size_t> &order, size_t size)
     }
 }
 
-std::vector<int> PmergeMe::sortVector(std::vector<int> input)
+template <typename T>
+static T mergeInsertSort(const T &input)
 {
     if (input.size() <= 1)
         return input;
-
     std::vector<std::pair<int, int> > pairs;
-    std::vector<int> large;
-    std::vector<int> small;
-    std::vector<int> main_chain;
+    T large;
+    T small;
+    T main_chain;
     std::vector<size_t> order;
     int odd = -1;
-    
     makePairs(input, pairs, odd);
     seperatePair(pairs, large, small);
-    main_chain = sortVector(large);
+    main_chain = mergeInsertSort(large);
     makeJacobsthalOrder(order, small.size());
+    for (size_t i = 0; i < order.size(); i++)
+    {
+        size_t index = order[i];
+        typename T::iterator bound;
+        bound = std::lower_bound(main_chain.begin(), main_chain.end(), large[index]);
+        typename T::iterator pos;
+        pos = std::lower_bound(main_chain.begin(), bound, small[index]);
+        main_chain.insert(pos, small[index]);
+    }
     if (odd != -1)
     {
-        std::vector<int>::iterator pos;
-
+        typename T::iterator pos;
         pos = std::lower_bound(main_chain.begin(), main_chain.end(), odd);
         main_chain.insert(pos, odd);
     }
     return main_chain;
 }
 
-// void PmergeMe::sortDeque()
-// {
-
-// }
-
 int PmergeMe::processInput(char **av)
 {
     int num;
     char c;
-
     for (int i = 1; av[i]; i++)
     {
         std::stringstream ss(av[i]);
@@ -99,29 +100,38 @@ int PmergeMe::processInput(char **av)
     return 1;
 }
 
-const std::vector<int> PmergeMe::getVector()
+const std::vector<int> &PmergeMe::getVector()
 {
     return _vector;
 }
 
-const std::deque<int> PmergeMe::getDeque()
+const std::deque<int> &PmergeMe::getDeque()
 {
     return _deque;
+}
+
+std::vector<int> PmergeMe::sortVector(const std::vector<int> &input)
+{
+    return mergeInsertSort(input);
+}
+
+std::deque<int> PmergeMe::sortDeque(const std::deque<int> &input)
+{
+    return mergeInsertSort(input);
 }
 
 PmergeMe::PmergeMe(char **av)
 {
     if (!processInput(av))
-            throw std::runtime_error("Error");
-    std::cout << "Before : ";
-    for (int i = 0; i < (int)_vector.size(); i++)
-        std::cout << _vector[i] << " ";
-    std::cout << std::endl;
+        throw std::runtime_error("Error");
 }
 
-/*--------------Orthodox----------------*/
+/**--------------Orthodox----------------*/
+
 PmergeMe::PmergeMe() {}
+
 PmergeMe::PmergeMe(const PmergeMe &other) : _vector(other._vector), _deque(other._deque) {}
+
 PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 {
     if (this != &other)
@@ -131,4 +141,5 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other)
     }
     return *this;
 }
+
 PmergeMe::~PmergeMe() {}
