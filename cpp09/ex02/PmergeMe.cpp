@@ -28,6 +28,7 @@ static void makeJacobsthalOrder(std::vector<size_t> &order, size_t size)
 {
     if (size == 0)
         return ;
+
     order.push_back(0);
     size_t previous = 1;
     size_t previous_previous = 1;
@@ -52,16 +53,19 @@ static T mergeInsertSort(const T &input)
 {
     if (input.size() <= 1)
         return input;
+
     std::vector<std::pair<int, int> > pairs;
     T large;
     T small;
     T main_chain;
     std::vector<size_t> order;
     int odd = -1;
+
     makePairs(input, pairs, odd);
     seperatePair(pairs, large, small);
     main_chain = mergeInsertSort(large);
     makeJacobsthalOrder(order, small.size());
+
     for (size_t i = 0; i < order.size(); i++)
     {
         size_t index = order[i];
@@ -94,6 +98,7 @@ int PmergeMe::processInput(char **av)
             return 0;
         else if (num <= 0)
             return 0;
+
         _vector.push_back(num);
         _deque.push_back(num);
     }
