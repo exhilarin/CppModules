@@ -1,7 +1,7 @@
 #include "PmergeMe.hpp"
 
 template <typename T>
-static void seperatePair(const std::vector<std::pair<int, int> > &pairs, T &large, T &small)
+static void seperatePair(const std::vector<std::pair<int, int> > &pairs, T &small, T &large)
 {
     for (size_t i = 0; i < pairs.size(); i++)
     {
@@ -62,7 +62,7 @@ static T mergeInsertSort(const T &input)
     int odd = -1;
 
     makePairs(input, pairs, odd);
-    seperatePair(pairs, large, small);
+    seperatePair(pairs, small, large);
     main_chain = mergeInsertSort(large);
     makeJacobsthalOrder(order, small.size());
 
